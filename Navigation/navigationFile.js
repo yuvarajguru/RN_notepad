@@ -13,6 +13,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../Screens/HomeScreen';
+import LoginScreen from '../Screens/LoginScreen';
 
 function NavigationFile() {
 
@@ -20,8 +21,9 @@ function NavigationFile() {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Home" component={HomeScreen}/>
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen options={{headerShown: false}} name="Home" component={HomeScreen}/>
+                <Stack.Screen options={{headerShown: false}} name="LoginScreen" component={LoginScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
