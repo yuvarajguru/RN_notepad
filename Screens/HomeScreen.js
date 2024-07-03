@@ -23,6 +23,7 @@ import {
 import ScreenWarpper from '../component/screenWarpper';
 import { colors } from '../theme';
 import randomImage from '../assests/randomImage';
+import EmptyList from '../component/EmptyList';
 
 
 
@@ -103,7 +104,7 @@ function HomeScreen({navigation}) {
       <View className="px-4 space-y-3">
         <View className="flex-row justify-between items-center">
           <Text className={`${colors.heading} font-bold text-xl`}>Recent Trips</Text>
-          <TouchableOpacity className="p-2 px-3 bg-white border-gray-200 rounded-full">
+          <TouchableOpacity className="p-2 px-3 bg-white border-gray-200 rounded-full" onPress={() => {navi.navigate('AddTripScreen'),console.log('hitted')}}>
             <Text className="text-black">Add trip</Text>
           </TouchableOpacity>
         </View>
@@ -112,6 +113,7 @@ function HomeScreen({navigation}) {
         <FlatList 
           data={item}
           numColumns={2}
+          ListEmptyComponent={EmptyList}
           keyExtractor={item => item.id}
           showsVerticalScrollIndicator={false}
           columnWrapperStyle={{
@@ -120,7 +122,7 @@ function HomeScreen({navigation}) {
         
           renderItem={({item}) => {
             return (
-              <TouchableOpacity className="bg-white p-2 rounded-2xl mb-3 shadow-2xl">
+              <TouchableOpacity className="bg-white p-4 rounded-2xl mb-3 shadow-2xl">
                   <View>
                     <Image source={randomImage()} className="w-36 h-36 mb-2"/>
                     <Text className={"text-black font-bold"}>{item.place}</Text>
