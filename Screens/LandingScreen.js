@@ -30,12 +30,12 @@ function LandingScreen() {
 
   return (
    <ScreenWarpper>
-    <View>
+    <ScrollView>
         <View className="mt-4 flex-row">
           <Image source={require('../assests/images/welcome.gif')} className="w-96 h-96 shadow mt-10"/>
         </View>
         <View className="mx-5">
-          <Text className="text-center font-bold text-4xl mb-7">Expensify</Text>
+          <Text className="text-center font-bold text-4xl mb-7 text-blue-500">Expensify</Text>
           <TouchableOpacity onPress={() => navigate.navigate('SignInScreen')} className="shaodw p-3 rounded-full mb-5" style={{backgroundColor:colors.button}}>
             <Text className="text-center font-bold text-lg">Sign Up</Text>
           </TouchableOpacity>
@@ -45,8 +45,11 @@ function LandingScreen() {
           <TouchableOpacity onPress={() => navigate.navigate('Home')} className="shaodw p-3 rounded-full mt-5" style={{backgroundColor:colors.button}}>
             <Text className="text-center font-bold text-lg">Guest</Text>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate.navigate('Home')} className="shaodw p-3 rounded-full mt-5" style={{backgroundColor:colors.button}}>
+            <Text className="text-center font-bold text-lg">welcome</Text>
+          </TouchableOpacity>
         </View>
-    </View>
+    </ScrollView>
    </ScreenWarpper>
   );
 }
