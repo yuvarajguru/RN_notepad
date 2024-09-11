@@ -25,21 +25,41 @@ import { colors } from '../theme';
 import BackButton from '../component/BackButton';
 // import { Image } from 'react-native-svg';
 import {ChevronLeftIcon} from 'react-native-heroicons/outline'
-
+import Snackbar from 'react-native-snackbar';
 import { useNavigation } from '@react-navigation/native';
+import Loading from '../component/loading';
+import {addDoc} from 'firebase/firestore'
+import { tripRef } from '../config/Firebase';
+import {useSelector,useDispatch} from 'react-redux';
 
 function AddTripScreen() {
     const [place,setPlace] = useState('');
     const [country,setCountry] = useState('');
-
+    const [loading,setLoading] = useState(false);
     const navi = useNavigation();
+    const {user} = useSelector(state => state.user);
 
-    const handleClick = () => {
+    console.log("user",user);
+    const handleClick = async () => {
         if(place && country){
-            navi.navigate('Home')
+            setLoading(true);
+            // navi.navigate('Home')
+            let doc = await addDoc(tripRef,{
+                place,
+                country,
+                userId: user.uid
+            })
+            setLoading(false);
+            if(doc && doc.id){
+                navi.goBack();
+            }
         }
         else{
-            Alert.alert('please fill fileds!')
+            Snackbar.show({
+                text:   "place and country is required!",
+                backgroundColor:'red'
+               ,
+              });
         }
     }
   return (
@@ -68,9 +88,14 @@ function AddTripScreen() {
         
         </View>
         <View>
-            <TouchableOpacity onPress={handleClick} style={{backgroundColor:colors.button}} className="my-6 rounded-full p-3 shadow-sm mx-2">
-                <Text className="text-center text-white text-lg font-bold">Add Trip</Text>
-            </TouchableOpacity>
+            {loading ? 
+                <Loading/>
+            :
+            <TouchableOpacity onPress={handleClick}  style={{backgroundColor:colors.button}} className="my-6 rounded-full p-3 shadow-sm mx-2">
+                    <Text className="text-center text-white text-lg font-bold">Add Trip</Text>
+             </TouchableOpacity>
+            }
+           
         </View>
       </View>
     </ScreenWarpper>

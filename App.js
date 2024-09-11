@@ -6,8 +6,9 @@
  */
 
 import React from 'react';
-
+import { Provider } from 'react-redux';
 import NavigationFile from './Navigation/navigationFile';
+import { store } from './Redux/store';
 
 // type SectionProps = PropsWithChildren<{
 //   title: string;
@@ -16,9 +17,11 @@ import NavigationFile from './Navigation/navigationFile';
 
 function App() {
 
-
   return (
-    <NavigationFile/>
+    <Provider store={store}>
+           <NavigationFile/>
+    </Provider>
+   
   );
 }
 
