@@ -29,25 +29,20 @@ function LandingScreen() {
   const navigate = useNavigation();
 
   return (
-   <ScreenWarpper>
+   <ScreenWarpper> 
     <ScrollView>
         <View className="mt-4 flex-row">
           <Image source={require('../assests/images/welcome.gif')} className="w-96 h-96 shadow mt-10"/>
         </View>
         <View className="mx-5">
-          <Text className="text-center font-bold text-4xl mb-7 text-blue-500">Expensify</Text>
-          <TouchableOpacity onPress={() => navigate.navigate('SignInScreen')} className="shaodw p-3 rounded-full mb-5" style={{backgroundColor:colors.button}}>
+          <Text style={{fontSize:28,fontWeight:'bold',color:'black',textAlign:'center',}} >Expensify</Text>
+          <TouchableOpacity onPress={() => navigate.navigate('SignInScreen')} className="shaodw p-3 rounded-full mb-5 my-2" style={{backgroundColor:colors.button}}>
             <Text className="text-center font-bold text-lg">Sign Up</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigate.navigate('LogInScreen')} className="shaodw p-3 rounded-full mt-5" style={{backgroundColor:colors.button}}>
             <Text className="text-center font-bold text-lg">Log In</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigate.navigate('Home')} className="shaodw p-3 rounded-full mt-5" style={{backgroundColor:colors.button}}>
-            <Text className="text-center font-bold text-lg">Guest</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigate.navigate('Home')} className="shaodw p-3 rounded-full mt-5" style={{backgroundColor:colors.button}}>
-            <Text className="text-center font-bold text-lg">welcome</Text>
-          </TouchableOpacity>
+         
         </View>
     </ScrollView>
    </ScreenWarpper>
@@ -55,7 +50,7 @@ function LandingScreen() {
 }
 
 // const styles = StyleSheet.create({
-  
+  // className="text-center font-bold text-4xl mb-7 text-black-500"
 // });
 
 export default LandingScreen;

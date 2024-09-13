@@ -71,6 +71,7 @@ function LoginInScreen() {
     }
   return (
     <ScreenWarpper>
+      <ScrollView> 
       <View className="flex justify-between h-full mx-4">
         <View>
             <View className="static mt-5">
@@ -86,9 +87,9 @@ function LoginInScreen() {
             </View>
             <View>
                 <Text className="text-black text-lg text-bold">Email</Text>
-                <TextInput value={email} onChangeText={(text) => setEmail(text)} className="p-4 bg-white rounded-full mb-3" />
+                <TextInput value={email} onChangeText={(text) => setEmail(text)} className="p-4 bg-white rounded-full mb-3 text-black" />
                 <Text className="text-black text-lg text-bold">Password</Text>
-                <TextInput secureTextEntry value={password} onChangeText={(text) => setPassword(text)} className="p-4 bg-white rounded-full "/>
+                <TextInput secureTextEntry value={password} onChangeText={(text) => setPassword(text)} className="p-4 bg-white rounded-full text-black"/>
                          
             </View>
         
@@ -106,6 +107,7 @@ function LoginInScreen() {
         }
         
       </View>
+      </ScrollView>
     </ScreenWarpper>
   );
 }
